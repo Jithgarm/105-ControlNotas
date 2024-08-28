@@ -2,6 +2,7 @@ const express = require("express")//Traer express
 const mongoose = require("mongoose")
 require("dotenv").config()
 
+const routerEstudiantes = require("./routes/estudiante")
 const app = express()//Asignando constante a express
 const port = 3005//Determinar puerto
 
@@ -12,6 +13,9 @@ app.set("port",port)
 mongoose.connect(process.env.MONGO_DB_URI)
 .then(()=>console.log("Conectado a la BD"))
 .catch((err)=>console.error(err.message))
+
+app.use(express.json())
+app.use("/api/estudiante",routerEstudiantes)
 
 //endpoint, ruta que voy a consultar, req = lo que envían, res = me devuelven la información con get
 app.get("/",(req,res)=>{
