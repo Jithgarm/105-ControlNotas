@@ -47,6 +47,15 @@ const controllerEstudiante = {
         } catch (error) {
             return res.status(500).send(error.message)
         }
+    },
+    deleteEstudiantePorId: async (req,res) => {
+        try {
+            const {id} = req.params
+            await Estudiante.findByIdAndDelete(id)
+            res.status(204).send("Estudiante eliminado")
+        } catch (error) {
+            return res.status(500).send(error.message)
+        }
     }
 }
 

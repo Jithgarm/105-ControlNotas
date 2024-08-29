@@ -13,6 +13,6 @@ router.get("/", controllerEstudiante.getEstudiantes)
 router.get("/:id", controllerEstudiante.getEstudiantePorId) //()=>console.log("leer estudiante usando el id")
 router.post("/", controllerEstudiante.create) //()=>console.log("crear estudiante")
 router.put("/:id", controllerEstudiante.upDateEstudiantesPorId) // ()=>console.log("editar estudiante"))
-router.delete("/", ()=>console.log("eliminar estudiante"))
+router.delete("/:id", controllerEstudiante.deleteEstudiantePorId) //  ()=>console.log("eliminar estudiante"))
 
 module.exports = router
