@@ -33,6 +33,20 @@ const controllerEstudiante = {
         } catch (error) {
             return res.status(500).send(error.message)
         }
+    },
+    upDateEstudiantesPorId: async (req,res) => {
+        try {
+            const {id} = req.params
+            await Estudiante.findByIdAndUpdate(id,{
+                nombre: req.body.nombre,
+                materias: req.body.materias,
+                asistecia: req.body.asistecia,
+                tareas: req.body.tareas
+            })
+            res.status(200).send("Estudiante actualizado")
+        } catch (error) {
+            return res.status(500).send(error.message)
+        }
     }
 }
 
